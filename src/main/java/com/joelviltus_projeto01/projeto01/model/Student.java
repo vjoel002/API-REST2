@@ -1,9 +1,12 @@
 package com.joelviltus_projeto01.projeto01.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,6 +25,10 @@ public class Student {
 	
 	@Column(name = "age", nullable = false)
 	private int age;
+	
+	@OneToOne(cascade = CascadeType.PERSIST)
+	@JoinColumn(name = "idUser")
+	private User user;
 
 	public int getIdStudent() {
 		return idStudent;
@@ -54,5 +61,15 @@ public class Student {
 	public void setAge(int age) {
 		this.age = age;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
 
 }
